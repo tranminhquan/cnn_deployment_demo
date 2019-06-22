@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap 4 Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-dark justify-content-center">
+          <a class="navbar-brand text-light" href="/home">Cap bottle prediction</a>
+        </nav>
+
+        <div class="row justify-content-center">
+            <h5>Upload image</h5>
+            <form action = "/predict/upload" method = "POST" 
+            enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <input type = "submit"/>
+            </form>
+        </div>
+
+        <div class="row">
+          <div class="col-lg">
+            <div class="row">
+              <h4>Input image</h4>
+            </div>
+            <div class="row">
+                <img src="{{image_filename}}" height="240" width="320">
+            </div>
+          </div>
+
+          <div class="col-lg">
+              <div class="row">
+                <h4>Class activation heat map</h4>
+              </div>
+              <div class="row">
+                <img src="{{cam_filename}}" height="240" width="320">
+              </div>
+          </div>
+
+          <div class="col-lg">
+            <div class="row">
+              <h4>Prediction:  </h4>
+              <br>
+              <h2>{{predict_label}}</h2>
+            </div>
+            <div class="row">
+              <h4>Confidence:</h4>
+              <br>
+              <h2>{{prob}}</h2>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+  </body>
+</html>
